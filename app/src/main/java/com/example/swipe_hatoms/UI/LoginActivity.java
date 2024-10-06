@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         checkBoxRememberMe = (CheckBox) findViewById(R.id.login_checkbox);
         Paper.init(this);
-
+        System.out.println("create and check");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
