@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#AF009A</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#000</color>
+    <color name="color_main_BG">#F0F7FA</color>
+    <color name="color_btn">#00A775</color>
 </resources>

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button loginButton;
+    private ImageButton loginButton, swipeButton;
     private EditText loginPhoneInput, loginPasswordInput;
     private ProgressDialog loadingBar;
     private String parentDbName = "Users";
@@ -40,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        loginButton = (Button)findViewById(R.id.login_button);
+        swipeButton = (ImageButton)findViewById(R.id.swipe_btn);
+        loginButton = (ImageButton)findViewById(R.id.login_button);
         loginPasswordInput = (EditText) findViewById(R.id.login_password_input);
         loginPhoneInput = (EditText) findViewById(R.id.login_phone_input);
         loadingBar = new ProgressDialog(this);
@@ -49,6 +50,13 @@ public class LoginActivity extends AppCompatActivity {
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         checkBoxRememberMe = (CheckBox) findViewById(R.id.login_checkbox);
         Paper.init(this);
+        swipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(homeIntent);
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +69,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdminLink.setVisibility(View.VISIBLE);
-                loginButton.setText("Вход для админа");
+                Toast.makeText(LoginActivity.this, "Вы вошли как администратор", Toast.LENGTH_SHORT).show();
+//                loginButton.setText("Вход для админа");
                 parentDbName = "Admins";
+                checkBoxRememberMe.setVisibility(View.INVISIBLE);
             }
         });
         NotAdminLink.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +80,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AdminLink.setVisibility(View.VISIBLE);
                 NotAdminLink.setVisibility(View.INVISIBLE);
-                loginButton.setText("Войти");
+                Toast.makeText(LoginActivity.this, "Вы вошли как пользователь", Toast.LENGTH_SHORT).show();
+//                loginButton.setText("Войти");
                 parentDbName = "Users";
+                checkBoxRememberMe.setVisibility(View.VISIBLE);
             }
         });
     }
