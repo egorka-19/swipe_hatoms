@@ -34,7 +34,7 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Paper.book().destroy();
-                Intent loginIntent = new Intent(QuizFragment.this.getContext(), MainActivity.class);
+                Intent loginIntent = new Intent(QuizFragment.this.getContext(), LoginActivity.class);
                 startActivity(loginIntent);
             }
         });

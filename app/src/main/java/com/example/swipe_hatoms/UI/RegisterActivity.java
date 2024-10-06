@@ -7,12 +7,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.swipe_hatoms.R;
+import com.example.swipe_hatoms.UI.Users.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
-    public Button registerBtn;
+    public ImageButton registerBtn, swipeButton;
     public EditText usernameInput, phoneInput, passwordInput;
     private ProgressDialog loadingBar;
 
@@ -32,12 +34,23 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        swipeButton = (ImageButton)findViewById(R.id.swipe_btn);
 
-        registerBtn = (Button)findViewById(R.id.register_button);
+        registerBtn = (ImageButton)findViewById(R.id.register_button);
         usernameInput = (EditText)findViewById(R.id.register_username_input);
         phoneInput = (EditText)findViewById(R.id.register_phone_input);
         passwordInput = (EditText)findViewById(R.id.register_password_input);
         loadingBar = new ProgressDialog(this);
+
+        swipeButton = (ImageButton)findViewById(R.id.swipe_btn);
+
+        swipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(homeIntent);
+            }
+        });
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

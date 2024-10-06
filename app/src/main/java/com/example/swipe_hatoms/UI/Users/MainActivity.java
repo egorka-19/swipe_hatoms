@@ -3,6 +3,7 @@ package com.example.swipe_hatoms.UI.Users;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
-    private Button joinButton, loginButton;
     private ProgressDialog loadingBar;
 
     @Override
@@ -33,26 +33,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        joinButton = (Button) findViewById(R.id.main_join_button);
-        loginButton = (Button) findViewById(R.id.main_login_button);
         loadingBar = new ProgressDialog(this);
 
         Paper.init(this);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
             }
-        });
-        joinButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(registerIntent);
-            }
-        });
+        }, 1 * 1000); // Когда будем делать анимацию, если вообще будем, то надо учесть то, что по времени должно быть в идеале 1 секунда, иначе когда
+        // делаешь больше, то ломается чекбокс запомни меня
+
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
