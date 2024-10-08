@@ -1,4 +1,4 @@
-package com.example.swipe_hatoms.bottomnav.games;
+package com.example.swipe_hatoms.bottomnav.chats;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,18 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.swipe_hatoms.databinding.FragmentGamesBinding;
+
+import com.example.swipe_hatoms.databinding.FragmentChatsBinding;
 
 import io.paperdb.Paper;
 
-public class GamesFragment extends Fragment {
-    public FragmentGamesBinding binding;
+public class ChatsFragment extends Fragment {
+    public FragmentChatsBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentGamesBinding.inflate(inflater, container, false);
-        FragmentGamesBinding.inflate(inflater, container, false);
+        binding = FragmentChatsBinding.inflate(inflater, container, false);
+        FragmentChatsBinding.inflate(inflater, container, false);
 
 
 

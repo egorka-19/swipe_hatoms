@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/quiz"
-        android:icon="@drawable/baseline_auto_awesome_24"
-        android:title="Квиз" />
+        android:id="@+id/main"
+        android:icon="@drawable/korzina"
+        android:title="" />
     <item
-        android:id="@+id/games"
-        android:icon="@drawable/baseline_games_24"
-        android:title="Игры" />
+        android:id="@+id/category"
+        android:icon="@drawable/loopa"
+        android:title="" />
+    <item
+        android:id="@+id/chats"
+        android:icon="@drawable/message"
+        android:title="" />
 
     <item
-        android:id="@+id/rate"
-        android:icon="@drawable/outline_rate_24"
-        android:title="Рейтинг" />
+        android:id="@+id/like"
+        android:icon="@drawable/like"
+        android:title="" />
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/baseline_person_24"
-        android:title="Профиль" />
+        android:icon="@drawable/profil"
+        android:title="" />
 
 </menu>
 
