@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.swipe_hatoms.R;
-import com.example.swipe_hatoms.bottomnav.games.GamesFragment;
+import com.example.swipe_hatoms.bottomnav.chats.ChatsFragment;
+import com.example.swipe_hatoms.bottomnav.category.CategoryFragment;
 import com.example.swipe_hatoms.bottomnav.profile.ProfileFragment;
-import com.example.swipe_hatoms.bottomnav.quiz.QuizFragment;
-import com.example.swipe_hatoms.bottomnav.rate.RateFragment;
-import com.example.swipe_hatoms.databinding.ActivityHomeBinding;
+import com.example.swipe_hatoms.bottomnav.main.MainFragment;
+import com.example.swipe_hatoms.bottomnav.like.LikeFragment;
 import com.example.swipe_hatoms.databinding.ActivityHomeBinding;
 
 import java.util.HashMap;
@@ -27,14 +27,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportFragmentManager().beginTransaction().replace(binding.fragmentContainer.getId(), new QuizFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(binding.fragmentContainer.getId(), new MainFragment()).commit();
 
-        binding.bottomNav.setSelectedItemId(R.id.quiz);
+        binding.bottomNav.setSelectedItemId(R.id.main);
         Map<Integer, Fragment> fragmentMap = new HashMap<>();
         fragmentMap.put(R.id.profile, new ProfileFragment());
-        fragmentMap.put(R.id.games, new GamesFragment());
-        fragmentMap.put(R.id.quiz, new QuizFragment());
-        fragmentMap.put(R.id.rate, new RateFragment());
+        fragmentMap.put(R.id.category, new CategoryFragment());
+        fragmentMap.put(R.id.main, new MainFragment());
+        fragmentMap.put(R.id.chats, new ChatsFragment());
+        fragmentMap.put(R.id.like, new LikeFragment());
         binding.bottomNav.setOnItemSelectedListener(item -> {
             Fragment fragment = fragmentMap.get(item.getItemId());
 
