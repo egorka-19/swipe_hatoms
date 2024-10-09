@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         loginButton = (Button)findViewById(R.id.login_button);
         loginPasswordInput = (EditText) findViewById(R.id.login_password_input);
         loginPhoneInput = (EditText) findViewById(R.id.login_phone_input);
@@ -119,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                homeIntent.putExtra("phone", phone);
                                 startActivity(homeIntent);
 
                             } else if(parentDbName.equals("Admins")){
