@@ -43,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         swipeButton = (ImageButton)findViewById(R.id.swipe_btn);
         loginButton = (ImageButton)findViewById(R.id.login_button);
+
+
+        loginButton = (ImageButton)findViewById(R.id.login_button);
         loginPasswordInput = (EditText) findViewById(R.id.login_password_input);
         loginPhoneInput = (EditText) findViewById(R.id.login_phone_input);
         loadingBar = new ProgressDialog(this);
@@ -58,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        System.out.println("create and check");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                homeIntent.putExtra("phone", phone);
                                 startActivity(homeIntent);
 
                             } else if(parentDbName.equals("Admins")){
