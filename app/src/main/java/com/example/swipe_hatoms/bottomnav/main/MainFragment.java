@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -23,6 +25,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,11 +54,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainFragment extends Fragment {
+    ScrollView scrollView;
+    ProgressBar progressBar;
     private FragmentMainBinding binding;
     FirebaseFirestore db;
     private Uri filePath;
 
-    private ImageButton nextButton;
+    private ImageButton nextButton, allCategoryBtn;
     RecyclerView popularRec, homeCatRec;
 
     private CheckBox low12, bow12;
@@ -78,10 +83,19 @@ public class MainFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         popularRec = view.findViewById(R.id.pop_rec);
         homeCatRec = view.findViewById(R.id.exp_rec);
+        scrollView = view.findViewById(R.id.scroll_view);
+        progressBar = view.findViewById(R.id.progressbar);
+        allCategoryBtn = view.findViewById(R.id.all_category_btn);
         phone = requireActivity().getIntent().getStringExtra("phone");
         loadUserInfo();
 
-        popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+
+        allCategoryBtn.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        scrollView.setVisibility(View.GONE);
+
+        popularRec.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        popularRec.setLayoutManager(new GridLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         popularModelList = new ArrayList<>();
         popularAdapters = new PopularAdapters(getActivity(), popularModelList);
         popularRec.setAdapter(popularAdapters);
@@ -96,6 +110,9 @@ public class MainFragment extends Fragment {
                                 PopularModel popularModel= document.toObject(PopularModel.class);
                                 popularModelList.add(popularModel);
                                 popularAdapters.notifyDataSetChanged();
+                                allCategoryBtn.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                scrollView.setVisibility(View.VISIBLE);
                             }
                         } else {
                             System.out.println("Error" + task.getException());

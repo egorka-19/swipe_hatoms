@@ -19,6 +19,7 @@
             android:layout_marginTop="0dp"
             android:scaleType="centerInside"
             android:src="@drawable/book_hapend" />
+
         <TextView
             android:id="@+id/cat_home_name"
             android:layout_width="0dp"
