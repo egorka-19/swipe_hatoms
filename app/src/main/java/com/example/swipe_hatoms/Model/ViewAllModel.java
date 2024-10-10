@@ -1,23 +1,35 @@
 package com.example.swipe_hatoms.Model;
 
-public class ViewAllModel {
+import java.io.Serializable;
+
+public class ViewAllModel implements Serializable {
     String name;
     String img_url;
     String price;
     String raiting;
     String rub;
     String type;
+    String description;
 
     public ViewAllModel() {
     }
 
-    public ViewAllModel(String name, String img_url, String price, String raiting, String rub, String type) {
+    public ViewAllModel(String name, String img_url, String price, String raiting, String rub, String type, String description) {
         this.name = name;
         this.img_url = img_url;
         this.price = price;
         this.raiting = raiting;
         this.rub = rub;
         this.type = type;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {

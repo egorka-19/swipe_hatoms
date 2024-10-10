@@ -1,12 +1,15 @@
 package com.example.swipe_hatoms.Model;
 
-public class PopularModel {
+import java.io.Serializable;
+
+public class PopularModel implements Serializable {
     String name;
     String raiting;
     String rub;
     String price;
     String img_url;
     String type;
+    String description;
 
     public PopularModel(String img_url) {
         this.img_url = img_url;
@@ -17,12 +20,21 @@ public class PopularModel {
     }
 
 
-    public PopularModel(String name, String raiting, String rub, String price, String type) {
+    public PopularModel(String name, String raiting, String rub, String price, String type, String description) {
         this.name = name;
         this.raiting = raiting;
         this.rub = rub;
         this.price = price;
         this.type = type;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImg_url() {

@@ -22,6 +22,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.swipe_hatoms.Model.PopularModel;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.UI.Users.ViewAllActivity;
+import com.example.swipe_hatoms.product_card;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
@@ -63,6 +64,14 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
         holder.name.setText(popularModelList.get(position).getName());
         holder.raiting.setText(popularModelList.get(position).getRaiting());
         holder.price.setText(popularModelList.get(position).getPrice());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, product_card.class);
+                intent.putExtra("detail", popularModelList.get(position));
+                context.startActivity(intent);
+            }
+        });
 
 
 

@@ -1,6 +1,7 @@
 package com.example.swipe_hatoms.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.swipe_hatoms.Model.ViewAllModel;
 import com.example.swipe_hatoms.R;
+import com.example.swipe_hatoms.product_card;
 
 import java.util.List;
 
@@ -38,6 +40,15 @@ public class ViewAllAdapters extends RecyclerView.Adapter<ViewAllAdapters.ViewHo
         holder.name.setText(list.get(position).getName());
         holder.price.setText(list.get(position).getPrice());
         holder.raiting.setText(list.get(position).getRaiting());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, product_card.class);
+                intent.putExtra("detail", list.get(position));
+                context.startActivity(intent);
+            }
+        });
 
 
     }
