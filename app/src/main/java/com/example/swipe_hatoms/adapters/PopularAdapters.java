@@ -1,6 +1,7 @@
 package com.example.swipe_hatoms.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.swipe_hatoms.Model.PopularModel;
 import com.example.swipe_hatoms.R;
+import com.example.swipe_hatoms.UI.Users.ViewAllActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
@@ -61,6 +63,8 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
         holder.name.setText(popularModelList.get(position).getName());
         holder.raiting.setText(popularModelList.get(position).getRaiting());
         holder.price.setText(popularModelList.get(position).getPrice());
+
+
 
 
     }

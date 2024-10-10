@@ -7,12 +7,15 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -32,9 +35,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.swipe_hatoms.Model.HomeCategory;
 import com.example.swipe_hatoms.Model.PopularModel;
+import com.example.swipe_hatoms.Model.ViewAllModel;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.adapters.HomeAdapter;
 import com.example.swipe_hatoms.adapters.PopularAdapters;
+import com.example.swipe_hatoms.adapters.ViewAllAdapters;
 import com.example.swipe_hatoms.databinding.FragmentMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,6 +48,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -69,6 +75,10 @@ public class MainFragment extends Fragment {
 
     List<HomeCategory> categoryList;
     HomeAdapter homeAdapter;
+    EditText search_box;
+    private List<ViewAllModel> viewAllModelList;
+    private RecyclerView recyclerViewSearch;
+    private ViewAllAdapters viewAllAdapters;
 
     public String phone;
 
@@ -173,8 +183,64 @@ public class MainFragment extends Fragment {
                 }
         );
 
+        ////////////Search View
+
+        recyclerViewSearch = view.findViewById(R.id.search_rec);
+        search_box = view.findViewById(R.id.serach_box);
+        viewAllModelList = new ArrayList<>();
+        viewAllAdapters = new ViewAllAdapters(getContext(), viewAllModelList);
+        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setAdapter(viewAllAdapters);
+        recyclerViewSearch.setHasFixedSize(true);
+        search_box.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().isEmpty()){
+                    viewAllModelList.clear();
+                    viewAllAdapters.notifyDataSetChanged();
+                }else{
+                    searchProduct(s.toString());
+                }
+
+            }
+        });
+
         return view;
     }
+
+    private void searchProduct(String type) {
+        if (!type.isEmpty()){
+            db.collection("AllProducts").whereEqualTo("type", type).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful() && task.getResult() != null){
+                                viewAllModelList.clear();
+                                viewAllAdapters.notifyDataSetChanged();
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                    ViewAllModel viewAllModel = doc.toObject(ViewAllModel.class);
+                                    viewAllModelList.add(viewAllModel);
+                                    viewAllAdapters.notifyDataSetChanged();
+                                }
+
+                            }
+                        }
+                    });
+        }
+
+
+    }
+
     private void loadUserInfo() {
         FirebaseDatabase.getInstance().getReference().child("Users").child(phone)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
