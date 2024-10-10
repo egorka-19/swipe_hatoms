@@ -69,47 +69,15 @@
             app:layout_constraintStart_toStartOf="@+id/search_iv"
             app:layout_constraintTop_toTopOf="@+id/search_iv" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout_explore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/serach_box">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/nunito"
-                android:text="Категории товаров"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/view_all_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="Посмотреть все"
-                android:textColor="@color/color_btn"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exp_rec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_explore" />
+            app:layout_constraintTop_toBottomOf="@+id/search_iv" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
