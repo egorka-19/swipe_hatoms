@@ -19,6 +19,7 @@ import com.example.swipe_hatoms.Prevalent.Prevalent;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.UI.Admin.AdminCategoryActivity;
 import com.example.swipe_hatoms.UI.Users.HomeActivity;
+import com.example.swipe_hatoms.product_card;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
