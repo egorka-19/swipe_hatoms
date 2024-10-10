@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/white_rect"
-        android:layout_width="370dp"
-        android:layout_height="290dp"
+        android:layout_width="360dp"
+        android:layout_height="280dp"
         android:layout_marginTop="108dp"
         android:src="@drawable/rect"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
 
     <ImageButton
         android:id="@+id/button_like"
-        android:layout_width="345dp"
+        android:layout_width="330dp"
         android:layout_height="70dp"
         android:layout_marginTop="8dp"
         android:background="@null"
@@ -102,7 +102,7 @@
 
     <ImageButton
         android:id="@+id/setting"
-        android:layout_width="345dp"
+        android:layout_width="330dp"
         android:layout_height="70dp"
         android:layout_marginTop="128dp"
         android:background="@null"
@@ -115,16 +115,16 @@
 
     <ImageButton
         android:id="@+id/receive"
-        android:layout_width="370dp"
-        android:layout_height="220dp"
+        android:layout_width="380dp"
+        android:layout_height="260dp"
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/your_receive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/white_rect"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintVertical_bias="0.512" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

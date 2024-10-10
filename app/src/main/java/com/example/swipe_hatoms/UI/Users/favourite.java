@@ -1,4 +1,4 @@
-package com.example.swipe_hatoms;
+package com.example.swipe_hatoms.UI.Users;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.swipe_hatoms.R;
 
 public class favourite extends AppCompatActivity {
 
