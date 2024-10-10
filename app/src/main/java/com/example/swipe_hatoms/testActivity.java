@@ -5,7 +5,12 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class testActivity extends AppCompatActivity {
@@ -16,32 +21,65 @@ public class testActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        // Пример данных для записи
-        String userId = "user123";
-        String productId = "Ae6c4RVBRLQWpvZLXMAE"; // ID товара
-        String categoryId = "электроника"; // Категория продукта
-        String reviewId = "Отзыв_1"; // Уникальный ID отзыва
+        // Пример значений переменных
+        String category = "электроника"; // Категория из переменной
+        String productId = "Ae6c4RVBRLQWpvZLXMAE"; // ID товара из переменной
+        String userId = "89225164775"; // ID пользователя из переменной
+        int rating = 4; // Общая оценка
 
-        // Оценки по характеристикам
+        // Получаем текущую дату
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        // Предположим, что у нас есть словарь с категориями и характеристиками
+        Map<String, List<String>> productCategories = new HashMap<>();
+        productCategories.put("электроника", createCharacteristicsList(
+                "Качество экрана",
+                "Производительность",
+                "Автономность",
+                "Соответствие описанию",
+                "Качество звука",
+                "Наличие гарантийного обслуживания",
+                "Размер и вес",
+                "Удобство использования",
+                "Наличие обновлений",
+                "Энергоэффективность"
+        ));
+
+        // Подгружаем характеристики из словаря productCategories для категории "электроника"
+        List<String> characteristics = productCategories.get(category);
+
+        // Заполняем оценки для характеристик (эти данные можно будет подтягивать откуда-то)
         Map<String, Object> characteristicRatings = new HashMap<>();
         characteristicRatings.put("Качество экрана", 5);
         characteristicRatings.put("Производительность", 4);
         characteristicRatings.put("Автономность", 3);
 
-        // Информация об отзыве
+        // Добавляем остальные характеристики, если их нет в оценках (по умолчанию можно ставить 0)
+        for (String characteristic : characteristics) {
+            characteristicRatings.putIfAbsent(characteristic, 0);
+        }
+
+        // Формируем данные для записи в Firestore
         Map<String, Object> reviewData = new HashMap<>();
-        reviewData.put("userId", userId);
-        reviewData.put("rating", 4); // Общая оценка
-        reviewData.put("date", "2024-10-11"); // Дата отзыва
+        reviewData.put("rating", rating); // Общая оценка
+        reviewData.put("date", currentDate); // Текущая дата
         reviewData.put("characteristicRatings", characteristicRatings); // Оценки по характеристикам
 
-        // Добавление отзыва в коллекцию "Отзывы" для товара
+        // Записываем данные в Firestore
         db.collection("ProductCategories")
-                .document(categoryId) // Категория
+                .document(category) // Категория (например, "электроника")
                 .collection(productId) // ID товара
-                .document(reviewId) // Отзыв
+                .document(userId) // ID пользователя
                 .set(reviewData)
-                .addOnSuccessListener(aVoid -> Log.d("Firestore", "Отзыв успешно добавлен!"))
-                .addOnFailureListener(e -> Log.w("Firestore", "Ошибка добавления отзыва", e));
+                .addOnSuccessListener(aVoid -> Log.d("Firestore", "Данные успешно добавлены!"))
+                .addOnFailureListener(e -> Log.w("Firestore", "Ошибка при добавлении данных", e));
+    }
+    private List<String> createCharacteristicsList(String... characteristics) {
+        List<String> list = new ArrayList<>();
+        for (String characteristic : characteristics) {
+            list.add(characteristic);
+        }
+        return list;
     }
 }
+

@@ -3,24 +3,34 @@ package com.example.swipe_hatoms.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import java.util.List;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swipe_hatoms.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 public class response extends RecyclerView.Adapter<response.MyViewHolder> {
 
     private List<String> dataList;
+    private Map<String, List<String>> productCategories;
+    public String category;
+    private Random random = new Random();
 
-    public response(List<String> dataList) {
+    public response(List<String> dataList, Map<String, List<String>> productCategories) {
         this.dataList = dataList;
+        this.productCategories = productCategories;
     }
 
     @NonNull
@@ -32,66 +42,50 @@ public class response extends RecyclerView.Adapter<response.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        // Установка текста для заголовков SeekBar
-        holder.seekbar1Title.setText("");
-        holder.seekbar2Title.setText("SeekBar 2");
-        holder.seekbar3Title.setText("SeekBar 3");
+        category = "бытовая техника"; // Предположим, категория "электроника" для демонстрации
 
-        // Установка текста для Switch и Button
-        holder.switchElement.setText("Рекомендую этот товар");
-
-        // Дополнительная логика, если нужно настроить SeekBar'ы или Switch
-        holder.seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // Логика изменения значения SeekBar 1
+        // Получение 3 случайных характеристик из productCategories по категории
+        List<String> characteristics = productCategories.get(category);
+        // Перемешиваем список
+        Collections.shuffle(characteristics);
+        List<String> result = new ArrayList<>();
+        // Добавляем элементы в результат, пока не будет собрано нужное количество
+        int index = 0;
+        while (result.size() <= 3) {
+            // Если мы прошли весь список, начинаем снова
+            if (index >= characteristics.size()) {
+                index = 0;
             }
+            result.add(characteristics.get(index));
+            index++;
+        }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+        String characteristic1 = result.get(0);
+        String characteristic2 = result.get(1);
+        String characteristic3 = result.get(2);
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
+        // Установка заголовков для SeekBar
+        holder.seekbar1Title.setText(characteristic1);
+        holder.seekbar2Title.setText(characteristic2);
+        holder.seekbar3Title.setText(characteristic3);
 
-        holder.seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // Логика изменения значения SeekBar 2
-            }
+        // Логика для обработки нажатия на кнопку отправки
+        holder.sendBtn.setOnClickListener(v -> {
+            // Получение значений прогресса из SeekBar'ов
+            int rating1 = holder.seekBar1.getProgress();
+            int rating2 = holder.seekBar2.getProgress();
+            int rating3 = holder.seekBar3.getProgress();
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            // Создание словаря с характеристиками и их оценками
+            Map<String, Integer> ratings = new HashMap<>();
+            ratings.put(characteristic1, rating1);
+            ratings.put(characteristic2, rating2);
+            ratings.put(characteristic3, rating3);
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
+            // Пример вывода или отправки данных в базу
+            Toast.makeText(holder.itemView.getContext(), "Данные отправлены: " + ratings.toString(), Toast.LENGTH_SHORT).show();
 
-        holder.seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // Логика изменения значения SeekBar 3
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        holder.switchElement.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Логика изменения состояния Switch
-        });
-
-        holder.send.setOnClickListener(v -> {
-            // Логика для нажатия на кнопку
+            // Можно добавить логику для отправки этих данных в базу данных
         });
     }
 
@@ -100,12 +94,16 @@ public class response extends RecyclerView.Adapter<response.MyViewHolder> {
         return dataList.size();
     }
 
+    // Функция для получения случайной характеристики
+    private String getRandomCharacteristic(List<String> characteristics) {
+        return characteristics.get(random.nextInt(characteristics.size()));
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        RatingBar rating;
         TextView seekbar1Title, seekbar2Title, seekbar3Title;
         SeekBar seekBar1, seekBar2, seekBar3;
         Switch switchElement;
-        ImageButton send, qr_code;
+        ImageButton sendBtn;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,9 +114,7 @@ public class response extends RecyclerView.Adapter<response.MyViewHolder> {
             seekBar2 = itemView.findViewById(R.id.seekBar2);
             seekBar3 = itemView.findViewById(R.id.seekBar3);
             switchElement = itemView.findViewById(R.id.switch_element);
-            send = itemView.findViewById(R.id.button);
-            qr_code = itemView.findViewById(R.id.qr_code);
-            rating = itemView.findViewById(R.id.ratingBar);
+            sendBtn = itemView.findViewById(R.id.send_btn);
         }
     }
 }

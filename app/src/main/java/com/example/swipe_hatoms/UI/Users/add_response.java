@@ -16,11 +16,13 @@ import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.adapters.response;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class add_response extends AppCompatActivity {
     SeekBar ratingSeekBar;
     TextView ratingValue;
+    HashMap<String, List<String>> productCategories;
 
     response responseAdapter;
     RecyclerView recycle;
@@ -34,10 +36,37 @@ public class add_response extends AppCompatActivity {
 
         recycle.setLayoutManager(new LinearLayoutManager(this));
         List<String> responses = new ArrayList<>();
+
+        productCategories = new HashMap<>();
+
+        productCategories.put("электроника", createCharacteristicsList(
+                "Качество экрана",
+                "Производительность",
+                "Автономность",
+                "Соответствие описанию",
+                "Качество звука",
+                "Наличие гарантийного обслуживания",
+                "Размер и вес",
+                "Удобство использования",
+                "Наличие обновлений",
+                "Энергоэффективность"));
+
+        productCategories.put("бытовая техника", createCharacteristicsList(
+                "Мощность",
+                "Уровень шума",
+                "Энергоэффективность",
+                "Качество сборки",
+                "Удобство управления",
+                "Надежность",
+                "Вместимость",
+                "Наличие дополнительных функций",
+                "Гарантийный срок",
+                "Дизайн"));
         // Пример данных для списка
         responses.add("Ответ 1");
-        responseAdapter = new response(responses);
+        responseAdapter = new response(responses, productCategories);
         recycle.setAdapter(responseAdapter);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -45,5 +74,20 @@ public class add_response extends AppCompatActivity {
         });
     }
 
+    private List<String> createCharacteristicsList(String... characteristics) {
+        List<String> list = new ArrayList<>();
+        for (String characteristic : characteristics) {
+            list.add(characteristic);
+        }
+        return list;
+    }
 
+    public List<String> getCharacteristics(String category) {
+        return productCategories.get(category);
+    }
+
+    // Метод для получения всех категорий
+    public HashMap<String, List<String>> getAllCategories() {
+        return productCategories;
+    }
 }

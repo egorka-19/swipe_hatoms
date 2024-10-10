@@ -1,7 +1,9 @@
 package com.example.swipe_hatoms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,10 +16,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.example.swipe_hatoms.Model.PopularModel;
 import com.example.swipe_hatoms.Model.ViewAllModel;
+import com.example.swipe_hatoms.UI.Users.add_response;
 
 public class product_card extends AppCompatActivity {
     ImageView detailedImg;
     TextView price, description, name;
+
+    ImageButton get_reviews;
 
     ViewAllModel viewAllModel = null;
     PopularModel popularModel = null;
@@ -28,6 +33,16 @@ public class product_card extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_card);
 
+        get_reviews = findViewById(R.id.get_reviews);
+
+        get_reviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(product_card.this, add_response.class);
+
+                startActivity(intent);
+            }
+        });
         final Object object = getIntent().getSerializableExtra("detail");
         if (object instanceof ViewAllModel){
             viewAllModel = (ViewAllModel) object;
