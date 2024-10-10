@@ -48,7 +48,7 @@ public class settings extends AppCompatActivity {
             but_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(settings.this, ProfileFragment.class);
+                    Intent intent = new Intent(settings.this, HomeActivity.class);
                     startActivity(intent);
                 }
             });
