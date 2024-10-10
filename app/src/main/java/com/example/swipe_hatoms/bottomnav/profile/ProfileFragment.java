@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.swipe_hatoms.R;
+import com.example.swipe_hatoms.UI.Users.settings;
 import com.example.swipe_hatoms.databinding.FragmentProfileBinding;
 import com.example.swipe_hatoms.UI.Users.favourite;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -71,7 +72,7 @@ public class ProfileFragment extends Fragment {
         binding.setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileFragment.this.getActivity(), favourite.class));
+                startActivity(new Intent(ProfileFragment.this.getActivity(), settings.class));
             }
         });
 
