@@ -36,7 +36,6 @@ public class ViewAllAdapters extends RecyclerView.Adapter<ViewAllAdapters.ViewHo
     public void onBindViewHolder(@NonNull ViewAllAdapters.ViewHolder holder, int position) {
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
         holder.name.setText(list.get(position).getName());
-        holder.description.setText(list.get(position).getDescription());
         holder.price.setText(list.get(position).getPrice());
         holder.raiting.setText(list.get(position).getRaiting());
 
@@ -50,14 +49,13 @@ public class ViewAllAdapters extends RecyclerView.Adapter<ViewAllAdapters.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name, description, price, raiting;
+        TextView name, price, raiting;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.cat_nav_img);
-            name = itemView.findViewById(R.id.nav_cat_name);
-            description = itemView.findViewById(R.id.nav_cat_description);
-            price = itemView.findViewById(R.id.nav_cat_price);
+            imageView = itemView.findViewById(R.id.imageView);
+            name = itemView.findViewById(R.id.name);
+            price = itemView.findViewById(R.id.price);
             raiting = itemView.findViewById(R.id.raiting);
         }
     }

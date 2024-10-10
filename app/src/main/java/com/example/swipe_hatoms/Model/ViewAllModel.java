@@ -1,24 +1,23 @@
 package com.example.swipe_hatoms.Model;
 
 public class ViewAllModel {
-
     String name;
-    String description;
-    String raiting;
-    String price;
-    String type;
     String img_url;
+    String price;
+    String raiting;
+    String rub;
+    String type;
 
     public ViewAllModel() {
     }
 
-    public ViewAllModel(String name, String description, String raiting, String price, String type, String img_url) {
+    public ViewAllModel(String name, String img_url, String price, String raiting, String rub, String type) {
         this.name = name;
-        this.description = description;
-        this.raiting = raiting;
-        this.price = price;
-        this.type = type;
         this.img_url = img_url;
+        this.price = price;
+        this.raiting = raiting;
+        this.rub = rub;
+        this.type = type;
     }
 
     public String getName() {
@@ -29,20 +28,12 @@ public class ViewAllModel {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getImg_url() {
+        return img_url;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getRaiting() {
-        return raiting;
-    }
-
-    public void setRaiting(String raiting) {
-        this.raiting = raiting;
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 
     public String getPrice() {
@@ -53,20 +44,28 @@ public class ViewAllModel {
         this.price = price;
     }
 
+    public String getRaiting() {
+        return raiting;
+    }
+
+    public void setRaiting(String raiting) {
+        this.raiting = raiting;
+    }
+
+    public String getRub() {
+        return rub;
+    }
+
+    public void setRub(String rub) {
+        this.rub = rub;
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
     }
 }
 

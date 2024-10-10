@@ -1,6 +1,10 @@
 package com.example.swipe_hatoms.UI.Users;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -8,12 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swipe_hatoms.Model.ViewAllModel;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.adapters.ViewAllAdapters;
+import com.example.swipe_hatoms.bottomnav.main.MainFragment;
+import com.example.swipe_hatoms.databinding.ActivityViewAllBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,8 +44,7 @@ public class ViewAllActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         String type = getIntent().getStringExtra("type");
         recyclerView = findViewById(R.id.view_all_rec);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         viewAllModelList = new ArrayList<>();
         viewAllAdapters = new ViewAllAdapters(this, viewAllModelList);
         recyclerView.setAdapter(viewAllAdapters);
@@ -187,6 +193,7 @@ public class ViewAllActivity extends AppCompatActivity {
                 }
             });
         }
+
 
     }
 }

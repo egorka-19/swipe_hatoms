@@ -95,12 +95,10 @@ public class MainFragment extends Fragment {
         homeCatRec = view.findViewById(R.id.exp_rec);
         scrollView = view.findViewById(R.id.scroll_view);
         progressBar = view.findViewById(R.id.progressbar);
-        allCategoryBtn = view.findViewById(R.id.all_category_btn);
         phone = requireActivity().getIntent().getStringExtra("phone");
         loadUserInfo();
 
 
-        allCategoryBtn.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
 
@@ -120,7 +118,6 @@ public class MainFragment extends Fragment {
                                 PopularModel popularModel= document.toObject(PopularModel.class);
                                 popularModelList.add(popularModel);
                                 popularAdapters.notifyDataSetChanged();
-                                allCategoryBtn.setVisibility(View.VISIBLE);
                                 progressBar.setVisibility(View.GONE);
                                 scrollView.setVisibility(View.VISIBLE);
                             }
@@ -189,7 +186,7 @@ public class MainFragment extends Fragment {
         search_box = view.findViewById(R.id.serach_box);
         viewAllModelList = new ArrayList<>();
         viewAllAdapters = new ViewAllAdapters(getContext(), viewAllModelList);
-        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewSearch.setAdapter(viewAllAdapters);
         recyclerViewSearch.setHasFixedSize(true);
         search_box.addTextChangedListener(new TextWatcher() {

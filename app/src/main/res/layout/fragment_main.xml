@@ -26,18 +26,6 @@
         android:orientation="vertical">
 
 
-        <ImageButton
-            android:id="@+id/all_category_btn"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/all_hapend"
-            app:layout_constraintEnd_toStartOf="@+id/exp_rec"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_iv" />
-
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
@@ -96,8 +84,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exp_rec"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_rec" />

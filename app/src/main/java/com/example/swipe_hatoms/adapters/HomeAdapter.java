@@ -36,7 +36,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(categoryList.get(position).getImg_url()).into(holder.catImg);
         holder.name.setText(categoryList.get(position).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +58,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         TextView name;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            catImg = itemView.findViewById(R.id.home_cat_img);
             name = itemView.findViewById(R.id.cat_home_name);
         }
     }
