@@ -17,6 +17,7 @@ import com.example.swipe_hatoms.Prevalent.Prevalent;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.UI.LoginActivity;
 import com.example.swipe_hatoms.UI.RegisterActivity;
+import com.example.swipe_hatoms.product_card;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                Intent i = new Intent(MainActivity.this, product_card.class);
                 startActivity(i);
                 finish();
 
