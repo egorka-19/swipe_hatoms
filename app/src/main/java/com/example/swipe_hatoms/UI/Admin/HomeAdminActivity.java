@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,6 +37,7 @@ public class HomeAdminActivity extends AppCompatActivity {
     private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey;
     private String downloadImageUrl;
     private ImageView productImage;
+    FirebaseFirestore db;
     private EditText productName, productDescription, productPrice;
     private Button addNewProductButton;
     private static final int GALLERYPICK = 1;
@@ -48,6 +50,7 @@ public class HomeAdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
+        db = FirebaseFirestore.getInstance();
 
         init();
 

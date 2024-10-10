@@ -2,15 +2,13 @@ package com.example.swipe_hatoms.Model;
 
 public class HomeCategory {
     String name;
-    String img_url;
     String type;
 
     public HomeCategory() {
     }
 
-    public HomeCategory(String name, String img_url, String type) {
+    public HomeCategory(String name, String type) {
         this.name = name;
-        this.img_url = img_url;
         this.type = type;
     }
 
@@ -22,13 +20,6 @@ public class HomeCategory {
         this.name = name;
     }
 
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
-    }
 
     public String getType() {
         return type;

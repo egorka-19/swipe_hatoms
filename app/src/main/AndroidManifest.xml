@@ -19,6 +19,9 @@
             android:name=".UI.Users.add_response"
             android:exported="false" />
         <activity
+            android:name=".UI.Users.ViewAllActivity"
+            android:exported="false" />
+        <activity
             android:name=".product_card"
             android:exported="false" />
         <activity
