@@ -27,7 +27,7 @@ public class product_card extends AppCompatActivity {
         receive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(product_card.this, add_response.class);
+                Intent intent = new Intent(product_card.this, testActivity.class);
                 startActivity(intent);
             }
         });
