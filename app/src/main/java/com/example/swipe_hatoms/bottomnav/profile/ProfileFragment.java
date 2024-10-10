@@ -1,7 +1,5 @@
 package com.example.swipe_hatoms.bottomnav.profile;
 
-import static android.content.Intent.getIntent;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,15 +18,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.databinding.FragmentProfileBinding;
-import com.example.swipe_hatoms.favourite;
+import com.example.swipe_hatoms.UI.Users.favourite;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,8 +33,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ProfileFragment extends Fragment {
@@ -68,6 +62,13 @@ public class ProfileFragment extends Fragment {
         });
 
         binding.buttonLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileFragment.this.getActivity(), favourite.class));
+            }
+        });
+
+        binding.setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileFragment.this.getActivity(), favourite.class));
