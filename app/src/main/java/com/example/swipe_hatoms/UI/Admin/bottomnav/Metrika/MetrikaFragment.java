@@ -26,134 +26,104 @@ public class MetrikaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMetrikaBinding.inflate(inflater, container, false);
         FragmentMetrikaBinding.inflate(inflater, container, false);
-        binding.car.setOnClickListener(new View.OnClickListener() {
+        binding.autoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "car");
+                intent.putExtra("type", "авто");
                 startActivity(intent);
             }
         });
-        binding.moto.setOnClickListener(new View.OnClickListener() {
+        binding.electronicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "moto");
+                intent.putExtra("type", "электроника");
                 startActivity(intent);
             }
         });
-        binding.boat.setOnClickListener(new View.OnClickListener() {
+        binding.technicsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "boat");
+                intent.putExtra("type", "техника");
                 startActivity(intent);
             }
         });
-        binding.service.setOnClickListener(new View.OnClickListener() {
+        binding.sportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "service");
+                intent.putExtra("type", "спорт");
                 startActivity(intent);
             }
         });
-        binding.dress.setOnClickListener(new View.OnClickListener() {
+        binding.clothesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "dress");
+                intent.putExtra("type", "одежда");
                 startActivity(intent);
             }
         });
-        binding.shoes.setOnClickListener(new View.OnClickListener() {
+        binding.creativeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "shoes");
+                intent.putExtra("type", "творчество");
                 startActivity(intent);
             }
         });
-        binding.sweather.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "clothes");
+                intent.putExtra("type", "дом");
                 startActivity(intent);
             }
         });
-        binding.hats.setOnClickListener(new View.OnClickListener() {
+        binding.kidsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "hat");
+                intent.putExtra("type", "дети");
                 startActivity(intent);
             }
         });
-        binding.phone.setOnClickListener(new View.OnClickListener() {
+        binding.beautyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "phone");
+                intent.putExtra("type", "красота");
                 startActivity(intent);
             }
         });
-        binding.pc.setOnClickListener(new View.OnClickListener() {
+        binding.bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "computer");
+                intent.putExtra("type", "книги");
                 startActivity(intent);
             }
         });
-        binding.photo.setOnClickListener(new View.OnClickListener() {
+        binding.healthBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "photo");
+                intent.putExtra("type", "здоровье");
                 startActivity(intent);
             }
         });
-        binding.fridge.setOnClickListener(new View.OnClickListener() {
+        binding.buildBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "fridge");
+                intent.putExtra("type", "ремонт");
                 startActivity(intent);
             }
         });
-        binding.bicycle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "sport");
-                startActivity(intent);
-            }
-        });
-        binding.books.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "book");
-                startActivity(intent);
-            }
-        });
-        binding.collecting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "collecting");
-                startActivity(intent);
-            }
-        });
-        binding.guitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MetrikaFragment.this.getActivity(), HomeAdminActivity.class);
-                intent.putExtra("category", "music");
-                startActivity(intent);
-            }
-        });
+
+
 
 
 
