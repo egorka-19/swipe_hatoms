@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
                                 Intent homeAdminIntent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                homeAdminIntent.putExtra("phone", phone);
                                 startActivity(homeAdminIntent);
 
                             }
