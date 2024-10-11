@@ -1,5 +1,8 @@
 package com.example.swipe_hatoms.adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swipe_hatoms.R;
+import com.example.swipe_hatoms.UI.Users.Reviews_end_Activity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -236,7 +240,7 @@ public class response extends RecyclerView.Adapter<response.MyViewHolder> {
 
             // отправка этих данных в базу данных
             float rating = holder.rating.getRating(); // извлечь
-
+            int rat = (int) rating;
             // Получаем текущую дату
             String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
@@ -252,6 +256,17 @@ public class response extends RecyclerView.Adapter<response.MyViewHolder> {
                 }
 
             }
+            Intent intent = new Intent(holder.itemView.getContext(), Reviews_end_Activity.class);
+            intent.putExtra("rating", rat);
+            intent.putExtra("rating1", rating1 + 1);
+            intent.putExtra("rating2", rating2 + 1);
+            intent.putExtra("rating3", rating3 + 1);
+            intent.putExtra("category", category);
+            intent.putExtra("characteristic1", characteristic1);
+            intent.putExtra("characteristic2", characteristic2);
+            intent.putExtra("characteristic3", characteristic3);
+            holder.itemView.getContext().startActivity(intent);
+
 
             // Формируем данные для записи в Firestore
             Map<String, Object> reviewData = new HashMap<>();

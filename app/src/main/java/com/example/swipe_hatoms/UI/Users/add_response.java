@@ -2,6 +2,8 @@ package com.example.swipe_hatoms.UI.Users;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -34,6 +36,7 @@ public class add_response extends AppCompatActivity {
     TextView name;
     SeekBar ratingSeekBar;
     TextView ratingValue;
+    ImageButton sendBtn;
     HashMap<String, List<String>> productCategories;
 
     response responseAdapter;
