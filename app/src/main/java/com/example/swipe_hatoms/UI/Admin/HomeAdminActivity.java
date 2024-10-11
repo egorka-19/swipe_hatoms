@@ -43,7 +43,6 @@ public class HomeAdminActivity extends AppCompatActivity {
     private static final int GALLERYPICK = 1;
     private Uri ImageUri;
     private StorageReference ProductImageRef;
-    private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
 
     @Override
@@ -156,28 +155,26 @@ public class HomeAdminActivity extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
-        productMap.put("category", categoryName);
+        productMap.put("img_url", downloadImageUrl);
+        productMap.put("type", categoryName);
         productMap.put("price", Price);
-        productMap.put("pname", Pname);
+        productMap.put("name", Pname);
 
-        ProductsRef.child(productRandomKey).updateChildren(productMap)
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("PopularProducts").document(productRandomKey).set(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-
+                        if (task.isSuccessful()) {
                             loadingBar.dismiss();
                             Toast.makeText(HomeAdminActivity.this, "Товар добавлен", Toast.LENGTH_SHORT).show();
 
                             Intent loginIntent = new Intent(HomeAdminActivity.this, AdminCategoryActivity.class);
                             startActivity(loginIntent);
-                        }
-                        else {
+                        } else {
                             String message = task.getException().toString();
-                            Toast.makeText(HomeAdminActivity.this, "Ошибка: "+ message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeAdminActivity.this, "Ошибка: " + message, Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
-
                         }
                     }
                 });
@@ -201,14 +198,13 @@ public class HomeAdminActivity extends AppCompatActivity {
     }
 
     private void init() {
-        categoryName = getIntent().getExtras().get("category").toString();
+        categoryName = getIntent().getExtras().get("type").toString();
         productImage = findViewById(R.id.select_product_image);
         productName = findViewById(R.id.product_name);
         productDescription = findViewById(R.id.description_name);
         productPrice = findViewById(R.id.product_price);
         addNewProductButton = findViewById(R.id.btn_add_new_product);
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);
 
     }
