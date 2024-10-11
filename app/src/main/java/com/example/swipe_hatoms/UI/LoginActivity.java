@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String phone = loginPhoneInput.getText().toString();
 
                 if (snapshot.child(parentDbName).child(phone).exists()){
 
@@ -137,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                                 homeIntent.putExtra("phone", phone);
+                                System.out.println("login" + phone);
                                 startActivity(homeIntent);
 
                             } else if(parentDbName.equals("Admins")){

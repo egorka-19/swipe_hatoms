@@ -33,13 +33,37 @@ public class product_card extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_card);
 
+
         get_reviews = findViewById(R.id.get_reviews);
+
+
+
+
 
         get_reviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(product_card.this, add_response.class);
 
+                String phone2 = intent.getStringExtra("phone");
+
+
+
+
+                if (viewAllModel != null){
+                    intent.putExtra("img_url", viewAllModel.getImg_url());
+                    intent.putExtra("type", viewAllModel.getType());
+                    intent.putExtra("name", viewAllModel.getName());
+                    intent.putExtra("phone", viewAllModel.getPhone());
+                    System.out.println("product" + intent.putExtra("phone", viewAllModel.getPhone()));
+                }
+                if (popularModel != null){
+                    intent.putExtra("img_url", popularModel.getImg_url());
+                    intent.putExtra("type", popularModel.getType());
+                    intent.putExtra("name", popularModel.getName());
+                    intent.putExtra("phone", popularModel.getPhone());
+                }
+                intent.putExtra("phone", phone2);
                 startActivity(intent);
             }
         });

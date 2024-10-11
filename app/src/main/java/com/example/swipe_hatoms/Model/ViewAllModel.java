@@ -10,12 +10,14 @@ public class ViewAllModel implements Serializable {
     String rub;
     String type;
     String description;
+    String phone;
 
     public ViewAllModel() {
     }
 
-    public ViewAllModel(String name, String img_url, String price, String raiting, String rub, String type, String description) {
+    public ViewAllModel(String phone, String name, String img_url, String price, String raiting, String rub, String type, String description) {
         this.name = name;
+        this.phone = phone;
         this.img_url = img_url;
         this.price = price;
         this.raiting = raiting;
@@ -78,6 +80,14 @@ public class ViewAllModel implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
 

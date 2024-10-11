@@ -10,6 +10,7 @@ public class PopularModel implements Serializable {
     String img_url;
     String type;
     String description;
+    String phone;
 
     public PopularModel(String img_url) {
         this.img_url = img_url;
@@ -20,13 +21,22 @@ public class PopularModel implements Serializable {
     }
 
 
-    public PopularModel(String name, String raiting, String rub, String price, String type, String description) {
+    public PopularModel(String phone, String name, String raiting, String rub, String price, String type, String description) {
         this.name = name;
+        this.phone = phone;
         this.raiting = raiting;
         this.rub = rub;
         this.price = price;
         this.type = type;
         this.description = description;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getDescription() {

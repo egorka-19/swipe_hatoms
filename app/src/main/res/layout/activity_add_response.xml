@@ -52,8 +52,8 @@
         app:srcCompat="@drawable/card_two" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/name1"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-20dp"
         android:text="Iphone 15 Pro"
