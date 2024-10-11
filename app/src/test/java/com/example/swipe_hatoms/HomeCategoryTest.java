@@ -1,5 +1,9 @@
+package com.example.swipe_hatoms;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import com.example.swipe_hatoms.Model.HomeCategory;
 
 public class HomeCategoryTest {
 

@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import com.example.swipe_hatoms.users.User;
+
 // Введу набор примитивных тестов для покрытия моделей.
 // Никаких моков вводить не будем просто ассерты на то, что "модельки работают правильно"
 
