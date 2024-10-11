@@ -16,9 +16,13 @@ import com.example.swipe_hatoms.UI.Admin.AdminCategoryActivity;
 import com.example.swipe_hatoms.UI.Admin.HomeAdminActivity;
 import com.example.swipe_hatoms.databinding.FragmentAddNewProductsBinding;
 import com.example.swipe_hatoms.databinding.FragmentMetrikaBinding;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class MetrikaFragment extends Fragment {
     public FragmentMetrikaBinding binding;
+
 
 
     @Nullable
