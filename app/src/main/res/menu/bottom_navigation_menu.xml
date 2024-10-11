@@ -4,10 +4,7 @@
         android:id="@+id/main"
         android:icon="@drawable/korzina"
         android:title="Главная" />
-    <item
-        android:id="@+id/category"
-        android:icon="@drawable/loopa"
-        android:title="Категории" />
+
     <item
         android:id="@+id/chats"
         android:icon="@drawable/message"

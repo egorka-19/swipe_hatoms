@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.swipe_hatoms.R;
 import com.example.swipe_hatoms.bottomnav.chats.ChatsFragment;
-import com.example.swipe_hatoms.bottomnav.category.CategoryFragment;
 import com.example.swipe_hatoms.bottomnav.profile.ProfileFragment;
 import com.example.swipe_hatoms.bottomnav.main.MainFragment;
 import com.example.swipe_hatoms.bottomnav.like.LikeFragment;
@@ -32,7 +31,6 @@ public class HomeActivity extends AppCompatActivity {
         binding.bottomNav.setSelectedItemId(R.id.main);
         Map<Integer, Fragment> fragmentMap = new HashMap<>();
         fragmentMap.put(R.id.profile, new ProfileFragment());
-        fragmentMap.put(R.id.category, new CategoryFragment());
         fragmentMap.put(R.id.main, new MainFragment());
         fragmentMap.put(R.id.chats, new ChatsFragment());
         fragmentMap.put(R.id.like, new LikeFragment());
