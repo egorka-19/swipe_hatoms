@@ -1,7 +1,7 @@
 package com.example.swipe_hatoms.users;
 
 public class User {
-    String username, profileImage;
+    public String username, profileImage;
 
 
     public User(String username, String profileImage) {
